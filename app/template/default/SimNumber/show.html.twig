@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SimNumber{% endblock %}
+
+{% block body %}
+    <h1>SimNumber</h1>
+
+    <table class="table table-border table-hover">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sim_number.id }}</td>
+            </tr>
+            <tr>
+                <th>Number</th>
+                <td>{{ sim_number.number }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ sim_number.price }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('sim_number_index') }}" class="btn btn-primary">back to list</a>
+
+    <a href="{{ path('sim_number_edit', {'id': sim_number.id}) }}" class="btn btn-warning">edit</a>
+
+    {{ include('SimNumber/_delete_form.html.twig') }}
+{% endblock %}

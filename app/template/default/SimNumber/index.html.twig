@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SimNumber index{% endblock %}
+
+{% block body %}
+    <h1>SimNumber index</h1>
+
+    <table class="table table-border table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Number</th>
+                <th>Price</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sim_number in sim_numbers %}
+            <tr>
+                <td>{{ sim_number.id }}</td>
+                <td>{{ sim_number.number }}</td>
+                <td>{{ sim_number.price }}</td>
+                <td>
+                    <a href="{{ path('sim_number_show', {'id': sim_number.id}) }}" class="btn btn-outline-info">show</a>
+                    <a href="{{ path('sim_number_edit', {'id': sim_number.id}) }}" class="btn btn-outline-warning">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('sim_number_new') }}" class="btn btn-primary">Create new</a>
+{% endblock %}

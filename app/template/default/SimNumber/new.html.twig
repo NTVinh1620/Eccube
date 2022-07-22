@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New SimNumber{% endblock %}
+
+{% block body %}
+    <h1>Create new SimNumber</h1>
+
+    {{ include('SimNumber/_form.html.twig') }}
+
+    <a href="{{ path('sim_number_index') }}" class="btn btn-primary">back to list</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit SimNumber{% endblock %}
+
+{% block body %}
+    <h1>Edit SimNumber</h1>
+
+    {{ include('SimNumber/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('sim_number_index') }}" class="btn btn-primary">back to list</a>
+
+    {{ include('SimNumber/_delete_form.html.twig') }}
+{% endblock %}
