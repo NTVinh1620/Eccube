@@ -39,6 +39,7 @@ composer.phar
 .idea
 *.php~
 .env
+.env.local
 .maintenance
 
 ###> symfony/phpunit-bridge ###

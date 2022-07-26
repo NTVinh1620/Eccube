@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dcc92aaca121508dd151dee97c178d06",
+    "content-hash": "01ae2094a6e0507bf3934e3ac79090d4",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -916,6 +916,7 @@
                 "cache",
                 "caching"
             ],
+            "abandoned": true,
             "time": "2018-11-09T06:25:35+00:00"
         },
         {
@@ -1602,6 +1603,7 @@
             "keywords": [
                 "reflection"
             ],
+            "abandoned": "roave/better-reflection",
             "time": "2018-06-14T14:45:07+00:00"
         },
         {
@@ -1652,6 +1654,7 @@
                 "monolog",
                 "productivity"
             ],
+            "abandoned": true,
             "time": "2018-07-27T15:41:37+00:00"
         },
         {
@@ -3262,6 +3265,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
+            "abandoned": "symfony/maker-bundle",
             "time": "2017-12-07T15:36:41+00:00"
         },
         {
@@ -3362,7 +3366,64 @@
                 "fpdi",
                 "pdf"
             ],
+            "abandoned": true,
             "time": "2019-01-30T14:39:33+00:00"
+        },
+        {
+            "name": "stripe/stripe-php",
+            "version": "v8.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stripe/stripe-php.git",
+                "reference": "1b7b1ea75c744b8a9f55a0942112f8e822a6a482"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/1b7b1ea75c744b8a9f55a0942112f8e822a6a482",
+                "reference": "1b7b1ea75c744b8a9f55a0942112f8e822a6a482",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "3.5.0",
+                "phpstan/phpstan": "^1.2",
+                "phpunit/phpunit": "^5.7 || ^9.0",
+                "squizlabs/php_codesniffer": "^3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Stripe\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stripe and contributors",
+                    "homepage": "https://github.com/stripe/stripe-php/contributors"
+                }
+            ],
+            "description": "Stripe PHP Library",
+            "homepage": "https://stripe.com/",
+            "keywords": [
+                "api",
+                "payment processing",
+                "stripe"
+            ],
+            "time": "2022-07-25T14:42:34+00:00"
         },
         {
             "name": "suncat/mobile-detect-bundle",
@@ -3482,6 +3543,7 @@
                 "mail",
                 "mailer"
             ],
+            "abandoned": "symfony/mailer",
             "time": "2018-09-11T07:12:52+00:00"
         },
         {
@@ -3909,6 +3971,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
+            "abandoned": "symfony/error-handler",
             "time": "2019-01-25T10:19:25+00:00"
         },
         {
@@ -4924,6 +4987,7 @@
                 "symfony",
                 "words"
             ],
+            "abandoned": "EnglishInflector from the String component",
             "time": "2019-01-16T13:27:11+00:00"
         },
         {
@@ -5008,6 +5072,12 @@
                 "type": "git",
                 "url": "https://github.com/symfony/lts.git",
                 "reference": "3a4e88df038e3197e6b66d091d2495fd7d255c0b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/lts/zipball/3a4e88df038e3197e6b66d091d2495fd7d255c0b",
+                "reference": "3a4e88df038e3197e6b66d091d2495fd7d255c0b",
+                "shasum": ""
             },
             "conflict": {
                 "symfony/asset": ">=4",
@@ -6450,6 +6520,7 @@
             ],
             "description": "Symfony SwiftmailerBundle",
             "homepage": "http://symfony.com",
+            "abandoned": "symfony/mailer",
             "time": "2019-01-05T11:51:59+00:00"
         },
         {
@@ -7261,6 +7332,7 @@
                 "i18n",
                 "text"
             ],
+            "abandoned": true,
             "time": "2018-12-05T18:34:18+00:00"
         },
         {
@@ -7431,6 +7503,7 @@
                 "code",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-code",
             "time": "2018-08-13T20:36:59+00:00"
         },
         {
@@ -7485,6 +7558,7 @@
                 "events",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-eventmanager",
             "time": "2018-04-25T15:33:34+00:00"
         }
     ],
@@ -7860,12 +7934,12 @@
             "version": "1.6.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/facebook/php-webdriver.git",
+                "url": "https://github.com/php-webdriver/php-webdriver-archive.git",
                 "reference": "bd8c740097eb9f2fc3735250fc1912bc811a954e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/bd8c740097eb9f2fc3735250fc1912bc811a954e",
+                "url": "https://api.github.com/repos/php-webdriver/php-webdriver-archive/zipball/bd8c740097eb9f2fc3735250fc1912bc811a954e",
                 "reference": "bd8c740097eb9f2fc3735250fc1912bc811a954e",
                 "shasum": ""
             },
@@ -7913,6 +7987,7 @@
                 "selenium",
                 "webdriver"
             ],
+            "abandoned": "php-webdriver/webdriver",
             "time": "2018-05-16T17:37:13+00:00"
         },
         {
@@ -7963,6 +8038,7 @@
                 "faker",
                 "fixtures"
             ],
+            "abandoned": true,
             "time": "2018-07-12T10:23:15+00:00"
         },
         {
@@ -7970,12 +8046,12 @@
             "version": "v1.6.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mikey179/vfsStream.git",
+                "url": "https://github.com/bovigo/vfsStream.git",
                 "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikey179/vfsStream/zipball/d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
+                "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
                 "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
                 "shasum": ""
             },
@@ -8706,6 +8782,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2017-11-27T05:48:46+00:00"
         },
         {
@@ -8849,6 +8926,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2018-08-09T05:50:03+00:00"
         },
         {
@@ -9578,12 +9656,12 @@
             "version": "1.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
+                "url": "https://github.com/webmozarts/assert.git",
                 "reference": "83e253c8e0be5b0257b881e1827274667c5c17a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/83e253c8e0be5b0257b881e1827274667c5c17a9",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/83e253c8e0be5b0257b881e1827274667c5c17a9",
                 "reference": "83e253c8e0be5b0257b881e1827274667c5c17a9",
                 "shasum": ""
             },
@@ -9632,11 +9710,12 @@
     "prefer-lowest": false,
     "platform": {
         "php": "^7.1.3",
-        "ext-intl": "^1.1",
+        "ext-intl": "*",
         "ext-mbstring": "*"
     },
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.1.3"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }

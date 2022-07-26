@@ -16,8 +16,8 @@ class TestController extends AbstractController
      * 
      * @Route("/sample")
      */
-    public function testMethod()
+    public function testMethod(): Response
     {
-        return new Response('Hello sample page !');
+        return $this->json(['success' => 'ok']);
     }
 }
