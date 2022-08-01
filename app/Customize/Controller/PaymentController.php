@@ -5,6 +5,7 @@ namespace Customize\Controller;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,7 +14,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Eccube\Repository\ProductRepository;
 use Eccube\Repository\ProductClassRepository;
 
-class PaymentController extends AbstractController
+class PaymentController extends Controller
 {
 
     /**
@@ -35,7 +36,9 @@ class PaymentController extends AbstractController
      */
     public function checkout(Request $request): Response
     {
-        Stripe::setApiKey('sk_test_51LPeA4HXUD9qlMk2qVrwYqkaAz5RLH4Tx84w0eT3ruSgd9FLq0xt8Pxvzv1Xkt1pQuPFplNHHqDzST3lBOVcP59R00fz45BcRR');
+        $stripeSK = $this->getParameter('eccube_stripe_sk');
+
+        Stripe::setApiKey($stripeSK);
 
         $session = Session::create([
             'payment_method_types' => ['card'],

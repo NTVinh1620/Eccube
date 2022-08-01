@@ -2,6 +2,7 @@ twig:
     globals:
       BaseInfo: null
       eccube_config: '@Eccube\Common\EccubeConfig'
+      stripePK: 'pk_test_51LPeA4HXUD9qlMk2Js9NdrTNi6DjJXk8PbUHmhYJBr6c2I1lmLKiJtW5zJde512BmTQiQtguWK4PKkVyLLMxMY8m005XchaveF'
     paths:
       '%eccube_theme_front_dir%': ~
       '%eccube_theme_front_default_dir%': ~

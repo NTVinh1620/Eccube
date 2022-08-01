@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Accept a payment</title>
+    <meta name="description" content="A demo of a payment on Stripe" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="app/template/default/Checkout/checkout.css" />
+    <link rel="stylesheet" href="app/template/default/Checkout/base.css" />
+  </head>
+  <body>
+    <div id="main">
+      <div id="container">
+        <div id="panel">
+          <form id="payment-form" name="payment-form">
+            {# <input type="text" id="name" value="Vinh" required />
+            <label for="email">Email</label>
+            <input type="email" id="email" value="{{ app.user.username }}" required /> #}
+            
+            <label for="card-element">Card</label>
+            <div id="card-element"></div>
+
+            <button>Pay</button>
+          </form>
+
+          <div id="messages" role="alert"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+
+        const stripe = Stripe('{{stripePK}}');
+
+        const elements = stripe.elements();
+        const card = elements.create('card');
+        card.mount('#card-element');
+
+        const form = document.getElementById('payment-form');
+        let submitted = false;
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          if(submitted) { return; }
+          submitted = true;
+          form.querySelector('button').disabled = true;
+
+          const data = new FormData(form);
+          data.append('id', 'temp_token');
+
+          const {error: backendError, clientSecret} = await fetch(
+            'send-checkout',
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: data,
+            }
+          ).then((r) => r.json());
+
+          if (backendError) {
+            addMessage(backendError.message);
+
+            submitted = false;
+            form.querySelector('button').disabled = false;
+            return;
+          }
+
+          addMessage(`Client secret returned.`);
+
+          const {error: stripeError, paymentIntent} = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+              payment_method: {
+                card: card,
+                
+              },
+            }
+          );
+
+          if (stripeError) {
+            addMessage(stripeError.message);
+
+            submitted = false;
+            form.querySelector('button').disabled = false;
+            return;
+          }
+
+          addMessage(`Payment ${paymentIntent.status}: ${paymentIntent.id}`);
+        });
+      });
+
+      const addMessage = (message) => {
+        const messageDiv = document.querySelector('#messages');
+        messageDiv.style.display = 'block';
+        messageDiv.innerHTML += '>' + message + '<br>';
+        console.log('Message: ' + message);
+      };
+    </script>
+
+  </body>
+</html>

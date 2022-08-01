@@ -134,3 +134,5 @@ parameters:
     eccube_form_date_format_js_calendar: 'dd-mm-yyyy'
     eccube_space: ' '
 
+    eccube_stripe_sk: 'sk_test_51LPeA4HXUD9qlMk2qVrwYqkaAz5RLH4Tx84w0eT3ruSgd9FLq0xt8Pxvzv1Xkt1pQuPFplNHHqDzST3lBOVcP59R00fz45BcRR'
+

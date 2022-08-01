@@ -2,19 +2,24 @@
 
 {% block title %}Make Payment{% endblock %}
 
+{% block javascripts %}
+    <script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
 {% block body %}
 
     {{ parent() }}
 
-    <form action="/checkout" method="POST">
-        {% for product in products %}
-        <input type="text" name="names[]" value="{{ product.name }}"/> 
-        <input type="text" name="prices[]" placeholder="Price"/> 
-        <input type="text" name="quantities[]" placeholder="Quantity"/> 
-        <br><br><br>
-        {% endfor %}
-
-        <button type="submit" class="btn btn-primary btn-lg">Checkout</button>
+    <form action="" method="POST">
+        <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_HxZzNHy8LImKK9LDtgMDRBwd"
+            data-amount="999"
+            data-name="Dollar Shear Club"
+            data-description="Widget"
+            data-image=""
+            data-locale="auto">
+        </script>
     </form>
 
 <div>
