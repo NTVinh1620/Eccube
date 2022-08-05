@@ -7,100 +7,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="app/template/default/Checkout/checkout.css" />
     <link rel="stylesheet" href="app/template/default/Checkout/base.css" />
+    <script src="https://js.stripe.com/v3/"></script>
+    <script defer src="app/template/default/Checkout/checkout.js"></script>
   </head>
   <body>
     <div id="main">
       <div id="container">
         <div id="panel">
-          <form id="payment-form" name="payment-form">
-            {# <input type="text" id="name" value="Vinh" required />
-            <label for="email">Email</label>
-            <input type="email" id="email" value="{{ app.user.username }}" required /> #}
-            
-            <label for="card-element">Card</label>
-            <div id="card-element"></div>
-
-            <button>Pay</button>
+          <p id="stripe-pk" style="display: none;">{{stripePK}}</p>
+          <form id="payment-form" name="payment-form" method="POST" action="{{ path('send-checkout') }}">
+            <div>
+              <label for="card-select" id="card-select-label" style="cursor: pointer;">Available Card</label>
+              <select name="card-select" id="card-select" required>
+                <option value="" selected>--Please Select--</option>
+                {% for card in cards %}
+                <option value="{{ card.tokenId }}">Card {{ card.id }}</option>
+                {% endfor %}
+              </select>
+              <label for="card-element" id="card-element-label" style="cursor: pointer;">Press new card</label>
+              <div id="card-element"></div>
+            </div>
+            <input type="hidden" name="token" id="token" />
+            <input type="hidden" name="total_price" id="total_price" />
+            <button id="button">Pay</button>
           </form>
+        </div>
 
-          <div id="messages" role="alert"></div>
+        <div style="margin-top: 30px;">
+        {% for msg in app.session.flashBag.get('success') %}
+          {{ msg}}
+        {% endfor %}
         </div>
       </div>
     </div>
-
-    <script src="https://js.stripe.com/v3/"></script>
-
+    
     <script>
-      document.addEventListener('DOMContentLoaded', async () => {
-
-        const stripe = Stripe('{{stripePK}}');
-
-        const elements = stripe.elements();
-        const card = elements.create('card');
-        card.mount('#card-element');
-
-        const form = document.getElementById('payment-form');
-        let submitted = false;
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-
-          if(submitted) { return; }
-          submitted = true;
-          form.querySelector('button').disabled = true;
-
-          const data = new FormData(form);
-          data.append('id', 'temp_token');
-
-          const {error: backendError, clientSecret} = await fetch(
-            'send-checkout',
-            {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: data,
-            }
-          ).then((r) => r.json());
-
-          if (backendError) {
-            addMessage(backendError.message);
-
-            submitted = false;
-            form.querySelector('button').disabled = false;
-            return;
-          }
-
-          addMessage(`Client secret returned.`);
-
-          const {error: stripeError, paymentIntent} = await stripe.confirmCardPayment(
-            clientSecret,
-            {
-              payment_method: {
-                card: card,
-                
-              },
-            }
-          );
-
-          if (stripeError) {
-            addMessage(stripeError.message);
-
-            submitted = false;
-            form.querySelector('button').disabled = false;
-            return;
-          }
-
-          addMessage(`Payment ${paymentIntent.status}: ${paymentIntent.id}`);
-        });
-      });
-
-      const addMessage = (message) => {
-        const messageDiv = document.querySelector('#messages');
-        messageDiv.style.display = 'block';
-        messageDiv.innerHTML += '>' + message + '<br>';
-        console.log('Message: ' + message);
-      };
+      var totalPrice = 0;
+      {% for order in orders %}
+        totalPrice += {{ order.payment_total  }}
+      {% endfor %}
     </script>
-
   </body>
 </html>
